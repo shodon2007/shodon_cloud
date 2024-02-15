@@ -1,0 +1,25 @@
+.auth {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.body {
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding: 20px;
+}
+
+.input {
+	padding: 5px 10px;
+	width: 100%;
+	background-color: var(--primary-color);
+}
+
+.btn {
+	padding: 5px 10px;
+	width: 100%;
+}

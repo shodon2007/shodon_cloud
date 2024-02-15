@@ -1,0 +1,28 @@
+.fe {
+	font-size: 16px;
+	color: var(--bg-color);
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 10px;
+	width: 100dvw;
+}
+
+.item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 5px;
+	padding: 5px 10px;
+	border: 2px solid black;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.item:hover {
+	background-color: yellow;
+}
+
+.img {
+	max-width: fit-content;
+	max-height: 100px;
+}
