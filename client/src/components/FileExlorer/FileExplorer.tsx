@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import api, { Item } from '../../api/api';
 import cls from './FileExplorer.module.scss';
-import folderImg from '../../static/folder.png';
 
 const checkTypes = ['.png', '.jpeg', '.webp', '.jpg'];
 
