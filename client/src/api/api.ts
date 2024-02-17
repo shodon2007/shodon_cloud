@@ -10,7 +10,7 @@ export interface Item {
 }
 
 class Api {
-	url = "http://78409c237dac.vps.myjino.ru";
+	url = "https://cloud-server.shodon.ru";
 
 	sendFile(file: File) {
 		const formData = new FormData();
