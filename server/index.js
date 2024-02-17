@@ -38,7 +38,7 @@ async function findFileType(arr) {
 		const handleredItem = await new Promise((res) => {
 			fs.stat(path.resolve(__dirname, myPath, el), (err, stats) => {
 				res({
-					type: stats.isFile() ? "file" : "folder",
+					isFile: stats.isFile(),
 					title: el,
 				});
 			});
@@ -61,7 +61,7 @@ app.get("/dir", async (req, res) => {
 function start() {
 	try {
 		app.listen(4000, () => {
-			console.log("сервер начал работать");
+			console.log("сервер начал работать на порту 4000");
 		});
 	} catch (e) {
 		console.log(e);

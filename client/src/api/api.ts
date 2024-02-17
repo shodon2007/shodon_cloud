@@ -5,12 +5,13 @@ const instance = axios.create({
 });
 
 export interface Item {
-	type: "file" | "folder";
+	isFile: boolean;
 	title: string;
 }
 
 class Api {
-	url = "https://cloud-server.shodon.ru";
+	// url = "https://cloud-server.shodon.ru";
+	url = 'http://localhost:4000';
 
 	sendFile(file: File) {
 		const formData = new FormData();
@@ -27,6 +28,10 @@ class Api {
 		const res = await axios.get<Item[]>(`${this.url}/dir`);
 		console.log(res.data);
 		return res.data;
+	}
+
+	async goFolder(foldername: string) {
+		console.log(foldername);
 	}
 }
 

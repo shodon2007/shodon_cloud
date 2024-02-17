@@ -1,7 +1,6 @@
 .header {
 	padding: 10px 20px;
 	color: var(--primary-color);
-	background-color: var(--bg-color);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -16,4 +15,13 @@
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
+}
+
+@media (max-width: 320px) {
+	.header {
+		padding: 5px 10px;
+	}
+	.title {
+		font-size: 16px;
+	}
 }
