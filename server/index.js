@@ -28,23 +28,37 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.get("/goDir", (req, res) => {
-	console.log(req);
+	myPath = myPath + '\\' + req.query.dirname;
+	res.send(true);
 });
+
+app.get('/back', (req, res) => {
+	myPath = myPath.slice(0, myPath.lastIndexOf('\\'));
+	res.send(true);
+} )
 
 async function findFileType(arr) {
 	let res = [];
 
 	for (let el of arr) {
 		const handleredItem = await new Promise((res) => {
-			fs.stat(path.resolve(__dirname, myPath, el), (err, stats) => {
-				res({
-					isFile: stats.isFile(),
-					title: el,
+				fs.stat(path.resolve(__dirname, myPath, el), (err, stats) => {
+					try {
+						res({
+							isFile: stats.isFile(),
+							title: el,
+						});
+					} catch(e) {
+						console.log(stats);
+						res({
+							isFile: true,
+							title: el
+						})
+					}
 				});
-			});
 		});
 
-		res.push(handleredItem);
+		res.push(handleredItem);	
 	}
 
 	return res;

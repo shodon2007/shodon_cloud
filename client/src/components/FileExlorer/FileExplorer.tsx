@@ -1,47 +1,22 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import api, { Item } from '../../api/api';
 import cls from './FileExplorer.module.scss';
 import FileImg from '../../static/file.png';
-import DownloadImg from '../../static/download.svg';
-
-const checkTypes = ['.png', '.jpeg', '.webp', '.jpg'];
-
-function isImage(filename: string) {
-
-    for (const i of checkTypes) {
-        if (filename.endsWith(i)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-function truncate(str: string) {
-    if (str.length >= 20) {
-        return str.slice(0, 20) + '...';
-    }
-}
+import DownloadImg from '../../static/download.png';
+import FolderImg from '../../static/folder.svg';
+import isImage from '../../helpers/isImage';
+import truncate from '../../helpers/truncate';
+import { FileContext } from '../../providers/FileProvider';
 
 const FileExplorer = () => {
-    let [loading, setLoading] = useState(true);
-    const [files, setFiles] = useState<Item[]>();
 
-    async function fileHandler() {
-        const res = await api.getType();
-        setFiles(res);
-        setLoading(false);
-    }
-
-    useEffect(() => {
-        fileHandler();
-    }, []);
+    const { files, loading, reload } = useContext(FileContext);
 
     if (loading) {
         return <div>загрузка...</div>
     }
 
-    if (!files) {
+    if (!files || files.length === 0) {
         return <div>хахахахахаах, тут нет файлов</div>
     }
 
@@ -60,8 +35,10 @@ const FileExplorer = () => {
                         </div>
                     }
 
-                    return <div key={index} className={cls.item}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#ffa000" d="M40,12H22l-4-4H8c-2.2,0-4,1.8-4,4v24c0,2.2,1.8,4,4,4h29.7L44,29V16C44,13.8,42.2,12,40,12z" /><path fill="#ffca28" d="M40,12H8c-2.2,0-4,1.8-4,4v20c0,2.2,1.8,4,4,4h32c2.2,0,4-1.8,4-4V16C44,13.8,42.2,12,40,12z" /></svg>
+                    return <div key={index} className={cls.item} onClick={async () => {
+                        api.goFolder(el.title).then(() => reload());
+                    }}>
+                        <img src={FolderImg} alt='пшел нахуй' />
                         <div className={cls.title}>{truncate(el.title)}</div>
                     </div>
                 })

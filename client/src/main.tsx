@@ -6,9 +6,12 @@ import router from './router/router.tsx'
 import store from './redux';
 
 import './index.scss'
+import FileProvider from './providers/FileProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <FileProvider>
+      <RouterProvider router={router} />
+    </FileProvider>
   </Provider>,
 )
