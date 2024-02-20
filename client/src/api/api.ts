@@ -10,8 +10,8 @@ export interface Item {
 }
 
 class Api {
-	// url = "https://cloud-server.shodon.ru";
-	url = 'http://localhost:4000';
+	url = "https://cloud-server.shodon.ru";
+	// url = 'http://localhost:4000';
 
 	sendFile(file: File) {
 		const formData = new FormData();
