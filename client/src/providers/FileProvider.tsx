@@ -1,10 +1,10 @@
 import { FC, ReactNode, createContext, useEffect, useState } from "react"
-import api, { Item } from "../api/api";
+import api, { Item } from "@/api/api";
 
 interface FileContextProps {
     loading: boolean,
     files: Item[],
-    reload: Function,
+    reload: () => void,
 }
 
 const FileContext = createContext<FileContextProps>({
@@ -18,7 +18,7 @@ interface FileProps {
 }
 
 const FileProvider: FC<FileProps> = ({ children }) => {
-    let [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [files, setFiles] = useState<Item[]>([]);
 
     async function fileHandler() {

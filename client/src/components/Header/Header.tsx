@@ -7,6 +7,8 @@ import MyLink from '../ui/MyLink/MyLink';
 const Header = () => {
     const auth = useSelector((el: RootState) => el.authSlice);
 
+    console.log(auth);
+
     return (
         <div className={cls.header}>
             <MyLink className={cls.title} to={'/'}>Shodon cloud</MyLink>
