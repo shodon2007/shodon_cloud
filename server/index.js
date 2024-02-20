@@ -10,7 +10,7 @@ app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
 let myPath = path.resolve(__dirname, "uploads");
 
-const uploadDir = path.join(__dirname, "uploads");
+const uploadDir = path.resolve(__dirname, "uploads");
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
@@ -28,12 +28,12 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.get("/goDir", (req, res) => {
-	myPath = myPath + '\\' + req.query.dirname;
+	myPath = path.resolve(myPath, req.query.dirname);
 	res.send(true);
 });
 
 app.get('/back', (req, res) => {
-	myPath = myPath.slice(0, myPath.lastIndexOf('\\'));
+	myPath = myPath.slice(0, myPath.lastIndexOf(path.sep));
 	res.send(true);
 } )
 
@@ -65,11 +65,15 @@ async function findFileType(arr) {
 }
 
 app.get("/dir", async (req, res) => {
-	let files = fs.readdirSync(myPath);
-
-	files = await findFileType(files);
-
-	res.send(files);
+	try {
+		let files = fs.readdirSync(myPath);
+		files = await findFileType(files);
+		res.send(files);
+	} catch(e) {
+		res.status(500).send({
+			message: 'ошибка крч'
+		});
+	}
 });
 
 function start() {
