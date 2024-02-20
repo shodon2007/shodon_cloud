@@ -6,7 +6,6 @@ const AddFile = () => {
     const ref = useRef<HTMLInputElement>(null)
 
     function changeFile(event: ChangeEvent<HTMLInputElement>) {
-        console.log('клик произошел')
         if (event.target.files?.[0]) {
             api.sendFile(event.target.files[0]);
         }

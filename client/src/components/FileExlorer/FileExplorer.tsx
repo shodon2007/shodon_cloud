@@ -1,12 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
-import api, { Item } from '../../api/api';
+import { useContext } from 'react';
+import api from '@/api/api';
+
+import FileImg from '@/static/file.png';
+import DownloadImg from '@/static/download.png';
+import FolderImg from '@/static/folder.svg';
+
+import isImage from '@/helpers/isImage/isImage';
+import truncate from '@/helpers/truncate/truncate';
+import { FileContext } from '@/providers/FileProvider';
+
 import cls from './FileExplorer.module.scss';
-import FileImg from '../../static/file.png';
-import DownloadImg from '../../static/download.png';
-import FolderImg from '../../static/folder.svg';
-import isImage from '../../helpers/isImage';
-import truncate from '../../helpers/truncate';
-import { FileContext } from '../../providers/FileProvider';
 
 const FileExplorer = () => {
 
@@ -30,7 +33,7 @@ const FileExplorer = () => {
                                 ? <img className={cls.img} src={`${api.url}/uploads/${el.title}`} alt="картинка" />
                                 : <img className={cls.img} src={FileImg} alt='файлик' />
                             }
-                            <div className={cls.title}>{truncate(el.title)}</div>
+                            <div className={cls.title}>{truncate(el.title, 40)}</div>
                             <button className={cls.download}><img src={DownloadImg} className={cls.img} /></button>
                         </div>
                     }
@@ -39,7 +42,7 @@ const FileExplorer = () => {
                         api.goFolder(el.title).then(() => reload());
                     }}>
                         <img src={FolderImg} alt='пшел нахуй' />
-                        <div className={cls.title}>{truncate(el.title)}</div>
+                        <div className={cls.title}>{truncate(el.title, 40)}</div>
                     </div>
                 })
             }
