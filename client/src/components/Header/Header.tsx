@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import AddFile from '../AddFile/AddFile';
 import cls from './Header.module.scss';
 import { RootState } from '../../redux';
 import MyLink from '../ui/MyLink/MyLink';

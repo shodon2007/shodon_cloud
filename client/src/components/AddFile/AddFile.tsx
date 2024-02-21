@@ -1,5 +1,5 @@
 import { ChangeEvent, useRef } from "react";
-import api from "../../api/api";
+import api from "@/api/fileExplorerApi";
 import cls from './AddFile.module.scss';
 
 const AddFile = () => {
