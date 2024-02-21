@@ -2,8 +2,26 @@
 	display: flex;
 	flex-direction: column;
 	min-height: 100dvh;
+	margin: 0 auto;
+	gap: 30px;
 }
 
 .body {
+	display: flex;
+	width: 1200px;
+	margin: 0 auto;
 	flex: 1 1 auto;
+}
+
+.wrapper {
+	border-radius: 20px;
+	background-color: var(--bg-focus-color);
+	width: 100%;
+}
+
+@media (max-width: 1200px) {
+	.body {
+		max-width: 100%;
+		padding: 0 10px;
+	}
 }

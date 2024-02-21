@@ -1,5 +1,5 @@
 import { FC, ReactNode, createContext, useEffect, useState } from "react"
-import api, { Item } from "@/api/api";
+import api, { Item } from "@/api/fileExplorerApi";
 
 interface FileContextProps {
     loading: boolean,

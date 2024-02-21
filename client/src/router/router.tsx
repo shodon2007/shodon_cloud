@@ -1,9 +1,9 @@
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import Auth from "../pages/Auth/Auth";
-import Layout from "../components/Layout/Layout";
-import FileExplorer from "../components/FileExlorer/FileExplorer";
+import Auth from "@/pages/Auth/Auth";
+import Layout from "@/components/Layout/Layout";
+import FileExplorer from "@/pages/FileExplorer/FileExplorer";
 
 const router = createBrowserRouter([
     {

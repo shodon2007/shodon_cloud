@@ -11,10 +11,13 @@ const Header = () => {
 
     return (
         <div className={cls.header}>
-            <MyLink className={cls.title} to={'/'}>Shodon cloud</MyLink>
-            <div className={cls.right}>
-                <AddFile />
-                <MyLink to={'/auth'} className={cls.link}>войти</MyLink>
+            <div className={cls.body}>
+                <MyLink className={cls.title} to={'/'}>Shodon cloud</MyLink>
+                <div className={cls.right}>
+                    {/* <AddFile /> */}
+                    <MyLink to={'/auth'} className={cls.link}>войти</MyLink>
+                    <MyLink to={'/auth'} className={cls.link}>зарегестрироваться</MyLink>
+                </div>
             </div>
         </div>
     )

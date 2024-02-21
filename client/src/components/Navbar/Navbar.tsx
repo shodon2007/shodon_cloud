@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import cls from './Navbar.module.scss';
-import api from "../../api/api";
+import api from "@/api/fileExplorerApi";
 import { FileContext } from "../../providers/FileProvider";
 
 const Navbar: FC = () => {
